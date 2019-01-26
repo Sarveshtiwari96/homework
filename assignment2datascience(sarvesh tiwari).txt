@@ -1,0 +1,221 @@
+1.) what is the differnece between supervised and unsupervised machine learning?
+-->
+Supervised:
+The majority of practical machine learning uses supervised learning.
+Supervised learning is where you have input variables (x) and an output variable (Y) and you use an algorithm to learn 
+the mapping function from the input to the output.
+Y = f(X)
+The goal is to approximate the mapping function so well that when you have new input data (x)
+that you can predict the output variables (Y) for that data.
+It is called supervised learning because the process of an algorithm learning from the training dataset can be thought of as a teacher supervising the 
+learning process.
+We know the correct answers, the algorithm iteratively makes predictions on the training data and is corrected by the teacher. 
+Learning stops when the algorithm achieves an acceptable level of performance.
+Supervised learning problems can be further grouped into regression and classification problems.
+-->Classification: A classification problem is when the output variable is a category, such as “red” or “blue” or “disease” and “no disease”.
+-->Regression: A regression problem is when the output variable is a real value, such as “dollars” or “weight”.
+Some common types of problems built on top of classification and regression include recommendation and time series prediction respectively.
+Some popular examples of supervised machine learning algorithms are:
+    1.Linear regression for regression problems.
+    2.Random forest for classification and regression problems.
+    3.Support vector machines for classification problems.
+
+
+Unsupervised Machine Learning:
+
+Unsupervised learning is where you only have input data (X) and no corresponding output variables.
+The goal for unsupervised learning is to model the underlying structure or distribution in the data in order to learn more about the data.
+These are called unsupervised learning because unlike supervised learning above there is no correct answers and there is no teacher. 
+Algorithms are left to their own devises to discover and present the interesting structure in the data.
+Unsupervised learning problems can be further grouped into clustering and association problems.
+    Clustering: A clustering problem is where you want to discover the inherent groupings in the data, such as grouping customers by purchasing behavior.
+    Association:  An association rule learning problem is where you want to discover rules that describe large portions of your data, 
+    such as people that buy X also tend to buy Y.
+Some popular examples of unsupervised learning algorithms are:
+    k-means for clustering problems.
+    Apriori algorithm for association rule learning problems.
+
+2.)How is KNN different from k-means clustering?
+-->
+K-nearest neighbors is a classification algorithm, which is a subset of supervised learning.
+K-means is a clustering algorithm, which is a subset of unsupervised learning.
+
+If I have a dataset of basketball players, their positions, and their measurements, and I want to assign positions to basketball players in a new 
+dataset where I have measurements but no positions, 
+I might use k-nearest neighbors.
+On the other hand, if I have a dataset of basketball players who need to be grouped into k distinct groups based off of similarity, I might use k-means.
+
+Correspondingly, the K in each case also mean different things! In k-nearest neighbors, 
+the k represents the number of neighbors who have a vote in determining a new player's position. 
+Take the example where k =3. If I have a new basketball player who needs a position, 
+I take the 3 basketball players in my dataset with measurements closest to my new basketball player, 
+and I have them vote on the position that I should assign the new player.
+
+The k in k-means means the number of clusters I want to have in the end. 
+If k = 5, I will have 5 clusters, or distinct groups, of basketball players after I run the algorithm on my dataset.
+
+3.)What is Bayes’ Theorem? How is it useful in a machine learning context?
+-->
+Bayes’ Theorem is the fundamental result of probability theory –
+it puts the posterior probability  P(H|D) of a hypothesis as a product of the probability of the data given the hypothesis(P(D|H)), 
+multiplied by the probability of the hypothesis (P(H)), divided by the probability of seeing the data. 
+(P(D)) We have already seen one application of Bayes Theorem in class – in the analysis of Information Cascades, 
+we have found that it is possible for rational decisions to be made where one’s own personal information is discarded, 
+based upon the conditional probabilities calculated via Bayes’ Theorem.
+Bayes’ Theorem is the basis of a branch of Machine Learning – that is, of the Bayesian variety.
+The tautological Bayesian Machine Learning algorithm is the Naive Bayes classifier, 
+which utilizes Bayes’ Rule with the strong independence assumption that features of the dataset are conditionally independent of each other, 
+given we know the class of data. We can apply this to spam filtering, which is the focus of this blog.
+In spam filtering, we would like to classify messages as spam or non-spam. We first learn a decision rule, 
+then apply this rule to new incoming messages. The essence of Naive Bayes is in the model creation process. 
+To model the probability of a word, “w”, Naive Bayes makes the important assumption that all words, 
+denoted by the vector  is conditionally independent the class of the message (spam or non-spam). 
+That is, if the message is spam, the word “Nigerian” and the word “Prince” are conditionally independent. 
+This classifier is aptly named – it is naive to assume this conditional independence.
+
+But given this conditional independence, we can write the probability of a message being spam as
+
+The conditional independence assumption gives a very elegant formula above, that at its core, is a repeated application of Bayes’ Rule, 
+for each word in the message. 
+This is called the multivariate Binomial Naive Bayes Classifier, and from research by Metsis, Androutsopoulos et. al, 
+we find in real life spam classification problems, it averages a recall rate (proportion of actual positives correctly classified) of 93%.
+
+4.)What is the differnce between probability and likelihood?
+-->
+Probability is the percentage that a success occur. For example, we do the binomial experiment by tossing a coin. 
+We suppose that the event that we get the face of coin in success, so the probability of success now is 0.5 because the probability of face and back of a coin is equal.
+0.5 is the probability of a success.
+Likelihood is the conditional probability. The same example, we toss the coin 10 times ,and we suppose that we get 7 success ( show the face) and 
+3 failed ( show the back). 
+The likelihood is calculated (for binomial distribution, it can be vary depend on the distributions)
+L(0.5|7)= 10C7 * 0.5^7 * (1-0.5)^3 = 0.1171
+
+5.)What is F1 score? how would you use it?
+F1 Score is needed when you want to seek a balance between Precision and Recall. 
+Right…so what is the difference between F1 Score and Accuracy then? We have previously seen that accuracy can be largely contributed by a large number of True Negatives which in most business circumstances, 
+we do not focus on much whereas False Negative and False Positive usually has business costs (tangible & intangible) thus F1 Score might be a better measure to use if we need to seek a balance between Precision and Recall AND there is an uneven class distribution (large number of Actual Negatives).
+
+The F1 score can be interpreted as a weighted average of the precision and recall, where an F1 score reaches its best value at 1 and worst score at 0. The relative contribution of precision and recall to the F1 score are equal. 
+
+The formula for the F1 score is:
+
+F1 = 2 * (precision * recall) / (precision + recall)
+
+6.)When should you use classification over regression?
+-->
+Classification is about identifying group membership while regression technique involves predicting a response. 
+Both techniques are related to prediction, where classification predicts the belonging to a class whereas regression predicts the value from a continuous set. 
+Classification technique is preferred over regression when the results of the model need to return the belongingness of data points in a dataset to specific explicit categories. 
+(For instance, when you want to find out whether a name is male or female instead of just finding it how correlated they are with male and female names.
+
+7.)How do you ensure you’re not overfitting with a model?
+-->
+There are three main methods to avoid overfitting:
+1- Keep the model simpler: reduce variance by taking into account fewer variables and parameters, thereby removing some of the noise in the training data.
+2- Use cross-validation techniques such as k-folds cross-validation.
+3- Use regularization techniques such as LASSO that penalize certain model parameters if they’re likely to cause overfitting.
+
+8.)How would you evaluate a logistic regression model?
+-->
+
+
+Logistic regression is a technique that is well suited for examining the relationship between a categorical response variable and one or more categorical or continuous predictor variables. 
+The model is generally presented in the following format, where ß refers to the parameters and x represents the independent variables.
+
+log(odds)=ß0+ß1*x1+...+ßn*xn
+
+The log(odds), or log-odds ratio, is defined by ln[p/(1-p)] and expresses the natural logarithm of the ratio between the probability that an event will occur, p(Y=1), to the probability that it will not occur. 
+We are usually concerned with the predicted probability of an event occuring and that is defined by p=1/1+exp^-z, where z=ß0+ß1*x1+...+ßn*xn
+
+steps to evaluate the logistic regression model:
+1.first import data and pre process it.
+2.then print column names and define the target and predictor.
+3.then train and fit the model.
+4.the test and predict the model.
+
+9.)What’s the “kernel trick” and how is it useful?
+-->
+In machine learning, kernel methods are a class of algorithms for pattern analysis, whose best known member is the support vector machine (SVM). 
+The general task of pattern analysis is to find and study general types of relations (for example clusters, rankings, principal components, correlations, classifications) in datasets.
+In its simplest form, the kernel trick means transforming data into another dimension that has a clear dividing margin between classes of data.
+For many algorithms that solve these tasks, the data in raw representation have to be explicitly transformed into feature vector representations via a user-specified feature map: in contrast, kernel methods require only a user-specified kernel, i.e., 
+a similarity function over pairs of data points in raw representation.
+
+Kernel methods owe their name to the use of kernel functions, which enable them to operate in a high-dimensional, implicit feature space without ever computing the coordinates of the data in that space, but rather by simply computing the inner products between the images of all pairs of data in the feature space.
+This operation is often computationally cheaper than the explicit computation of the coordinates. This approach is called the "kernel trick".
+Kernel functions have been introduced for sequence data, graphs, text, images, as well as vectors.
+
+Algorithms capable of operating with kernels include the kernel perceptron, support vector machines (SVM), Gaussian processes, principal components analysis (PCA), canonical correlation analysis, ridge regression, spectral clustering, linear adaptive filters and many others. 
+Any linear model can be turned into a non-linear model by applying the kernel trick to the model: replacing its features (predictors) by a kernel function.
+ 
+10.)How do you handle missing or corrupted data in a dataset?
+-->
+1.deleting rows.
+2.Replacing with mean/median/mode.
+3.assigning a unique category.
+4.predicting the missing value.
+5.using algorithms which support missing values.
+
+
+11.)Which data visualization libraries do you use? What are your thoughts on the best data visualization tools?
+-->
+Matplotlib-
+Simple and powerful visualizations can be generated using the Matplotlib Python Library. 
+More than a decade old, it is the most widely-used library for plotting in the Python community. 
+A wide range of graphs from histograms to heat plots to line plots can be plotted using Matplotlib.
+
+Many other libraries are built on top of Matplotlib and are designed to work in conjunction with analysis, it being the first Python data visualization library. 
+Libraries like pandas and matplotlib are “wrappers” over Matplotlib allowing access to a number of Matplotlib’s methods with less code.
+
+The versatility of Matplotlib can be used to make many visualization types:-
+    Scatter plots
+    Bar charts and Histograms
+    Line plots
+    Pie charts
+    Stem plots
+    Contour plots
+    Quiver plots
+    Spectrograms
+One can create grids, labels, legends etc. with ease since everything is customizable.
+
+12.)What is the difference between covariance and correlation?
+-->
+Covariance and Correlation are two mathematical concepts which are quite commonly used in business statistics.
+Both of these two determine the relationship and measures the dependency between two random variables. 
+Despite, some similarities between these two mathematical terms, they are different from each other. 
+Correlation is when the change in one item may result in the change in another item.
+Correlation is considered as the best tool for for measuring and expressing the quantitative relationship between two variables in formula.
+On the other hand, covariance is when two items vary together.
+
+13.)What is difference between AI vs Machine Learning vs Deep Learning?
+-->
+AI involves machines that can perform tasks that are characteristic of human intelligence. While this is rather general, it includes things like planning, understanding language, recognizing objects and sounds, learning, and problem solving.
+
+We can put AI in two categories, general and narrow. General AI would have all of the characteristics of human intelligence, including the capacities mentioned above. 
+Narrow AI exhibits some facet(s) of human intelligence, and can do that facet extremely well, but is lacking in other areas. 
+A machine that’s great at recognizing images, but nothing else, would be an example of narrow AI.
+At its core, machine learning is simply a way of achieving AI.
+
+Deep learning is one of many approaches to machine learning. 
+Other approaches include decision tree learning, inductive logic programming, clustering, reinforcement learning, and Bayesian networks, among others.
+Deep learning was inspired by the structure and function of the brain, namely the interconnecting of many neurons. 
+Artificial Neural Networks (ANNs) are algorithms that mimic the biological structure of the brain.
+In ANNs, there are “neurons” which have discrete layers and connections to other “neurons”. 
+Each layer picks out a specific feature to learn, such as curves/edges in image recognition. 
+It’s this layering that gives deep learning its name, depth is created by using multiple layers as opposed to a single layer.
+
+14.)Difference between R squared and Adjusted R squared?
+-->
+One major difference between R-squared and the adjusted R-squared is that R-squared supposes that every independent variable in the model explains the variation in the dependent variable. 
+It gives the percentage of explained variation as if all independent variables in the model affect the dependent variable. 
+Adjusted R-squared, on the other hand, gives the percentage of variation explained by only those independent variables that in reality affect the dependent variable.
+R-squared cannot verify whether the coefficient ballpark figure and its predictions are prejudiced. 
+It also does not show if a regression model is satisfactory; it can show an R-squared figure for a good model, or a high R-squared figure for a model that doesn’t fit.
+
+15.)How would you handle an imbalanced dataset?
+-->
+1. Random Under-Sampling
+2.Random Over-Sampling
+3.Cluster-Based Over Sampling
+4.Informed Over Sampling: Synthetic Minority Over-sampling Technique
+5.Modified synthetic minority oversampling technique (MSMOTE)
